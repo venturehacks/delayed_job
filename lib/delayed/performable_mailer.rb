@@ -9,6 +9,7 @@ module Delayed
 
   module DelayMail
     def delay(options = {})
+      options['queue'] ||= 'notification'
       DelayProxy.new(PerformableMailer, self, options)
     end
   end
